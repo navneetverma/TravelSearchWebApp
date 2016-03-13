@@ -1,0 +1,92 @@
+<style>
+#topContent
+{
+margin-left: 2.5%;
+margin-right: 2.5%;
+margin-top: 0.5%;
+padding-left: 2.5%;
+padding-top: 2.5%;
+padding-bottom: 2.5%;
+border: 5px solid black;
+background:#FFEFE7 ;
+}
+#bottomContent
+{
+margin-left: 2.5%;
+margin-right: 2.5%;
+margin-top: 5%;
+padding-top: 2.5%;
+padding-bottom: 2.5%;
+border: 5px solid black;
+background:#FFEFE7;
+}
+.review
+{
+margin-top: 1%;
+margin-left: 1.5%;
+margin-right: 1.5%;
+}
+#restimg
+{
+margin-bottom: 2.5%;
+}
+#im
+{
+float: left;
+height: 100px;
+width: 100px;
+}
+#favorite
+{
+float: right;
+margin-right: 5%;
+}
+</style>
+
+
+
+<div ng-controller="userCtrl">
+<div id="topContent">
+    <div class="row">
+        <div class="col-md-12">
+            <div id="restimg">
+            <img src="restpic.jpg" id="im"></div>
+             <div id="details">
+                     <b><h2>{{userid}}</h2></b>
+                     <div id="favorite">
+                     <button type="button" class="btn btn-default btn-lg" ng-click="add()" ng-hide="successful"}}>
+                    <span class="glyphicon glyphicon-heart" aria-hidden="true"></span> Add to Favorite
+                    </button>
+                    </div>
+                     <br><i>Email:{{email}}</i>
+                    </div>   
+                    </div>
+                    </div>
+                    </div>
+                    
+                    
+                    
+                    
+<div  id="bottomContent">  
+     <div class="row">
+        <div class="col-md-12"> 
+           <tabset>
+             <tab heading="Reviews"> 
+                <div class="review" ng-repeat="review in reviews">
+                <blockquote>
+                <rating ng-model="review.rating" readonly="true"></rating>
+                <div><a ui-sref="userRestaurant({restaurantID:review.restaurant_id,restaurantName:review.restaurant_name})">{{review.restaurant_name}}</a>
+                </div>
+                  <br>
+                  {{review.content}}
+                  <cite class="clearfix">—{{review.user_id }} On {{review.createdOn | date}}</cite>
+                </blockquote>   
+                </div>  
+                </tab>    
+                <tab heading="Favorites"> 
+                <div class="review" ng-repeat="favorite in favorites">
+                <blockquote>
+                {{favorite.name}}
+                </blockquote>   
+                </tab>
+                </div>      

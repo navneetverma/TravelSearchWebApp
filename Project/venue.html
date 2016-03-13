@@ -1,0 +1,48 @@
+<style>
+#searchbar
+    {
+    margin-top: 10px;
+    margin-left:10%;
+    margin-right:10%;
+
+    }
+    #searchbutton
+    {
+    margin-top:15px;
+    margin-left:40%;
+    margin-bottom:10px;
+    }
+    </style>
+<div ng-controller="eventCtrl">
+<div id="searchbar">
+       <div class="form-group">
+          <input type="text" class="form-control input-lg" placeholder="Enter City like Boston, New York, London, Mumbai  To Search Restaurants or Rooms" ng-model="loc">
+     </div>
+    <div class="row">
+       <button type="button" class="btn btn-sample btn-lg" id="searchbutton" value="Search" ng-click="getStops()">Search</button>
+        </div>
+        </div>
+    <div class="row">
+        <div class="col-md-12">
+           <div id="content" ng-show="show">
+              <table class="table table-striped" >
+             <thead>
+                   <tr>
+                      <th>Title</th>
+                       <th> Description</th>
+                         <th> Venue </th>
+                         <th> Address</th>
+                      </tr>
+               </thead>
+            <tbody>
+                 <tr ng-repeat="w in events">
+                  <td>{{w.title}}</td>
+                  <td>{{w.description}}</td>
+                   <td>{{w.venue_name}}</td>
+                   <td>{{w.venue_address}}</td>
+                 </tr>
+     </table>
+              </div>
+             </div>
+             </div>
+             </div> 

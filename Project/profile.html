@@ -1,0 +1,93 @@
+<style>
+#topContent
+{
+margin-left: 2.5%;
+margin-right: 2.5%;
+margin-top: 0.5%;
+padding-left: 2.5%;
+padding-top: 2.5%;
+padding-bottom: 2.5%;
+border: 5px solid black;
+background:#FFEFE7 ;
+}
+#bottomContent
+{
+margin-left: 2.5%;
+margin-right: 2.5%;
+margin-top: 5%;
+padding-top: 2.5%;
+padding-bottom: 2.5%;
+border: 5px solid black;
+background:#FFEFE7;
+}
+.review
+{
+margin-top: 1%;
+margin-left: 1.5%;
+margin-right: 1.5%;
+}
+#restimg
+{
+margin-bottom: 2.5%;
+}
+#im
+{
+float: left;
+height: 100px;
+width: 100px;
+}
+</style>
+
+
+
+<div ng-controller="profileCtrl">
+<div id="topContent">
+    <div class="row">
+        <div class="col-md-12">
+            <div id="restimg">
+            <img src="restpic.jpg" id="im"></div>
+             <div id="details">
+                     <b><h2>{{userid}}</h2></b>
+                     <br><i>Email:{{email}}</i>
+                    </div>   
+                    </div>
+                    </div>
+                    </div>
+                    
+                    
+                    
+                    
+<div  id="bottomContent">  
+     <div class="row">
+        <div class="col-md-12"> 
+           <tabset>
+             <tab heading="Reviews"> 
+                <div class="review" ng-repeat="review in reviews">
+                <blockquote>
+                <rating ng-model="review.rating" readonly="true"></rating>
+                <div><a ui-sref="restaurantDetails"><a ui-sref="restaurantDetails({restaurantID:review.restaurant_id,restaurantName:review.restaurant_name})">{{review.restaurant_name}}</a>
+                <button type="button" class="btn btn-danger" ng-click="delete(review._id,review)">Delete</button>
+                </div>
+                  <br>
+                  {{review.content}}
+                  <cite class="clearfix">—{{review.user_id }} On {{review.createdOn | date}}</cite>
+                </blockquote>   
+                </div>  
+                </tab>    
+                <tab heading="Favorite Restaurants"> 
+                <div class="review" ng-repeat="favorite in favorites">
+                <blockquote>
+                {{favorite.name}}
+                </blockquote>   
+                </div>
+                </tab>
+                <tab heading="Favorite Users"> 
+                <div class="review" ng-repeat="favorite in follow">
+                <blockquote>
+                <a ui-sref="userProfile({userID:favorite.followee})">{{favorite.followee}}</a>
+                </blockquote>   
+                </tab>    
+                </div>  
+            </div>  
+        </div>
+    </div>          

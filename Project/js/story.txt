@@ -1,0 +1,32 @@
+forrm.html            1.A Simple form with validation
+todo-basic.html       1.B Editable List
+index.htm             2.A The Javascript Timer
+nav.html              2.B The navigation bar using CSS and Angular JS
+table.html            2.C Table filtering using Angular JS
+form1.html            3.A Animating form Using CSS
+animating.htm         3.B Basic Jquery Animations
+stripedtable.html     3.C Animating Table with Jquery
+responsive_login_page.html 4.A Responsive Login Page without Bootstrap
+responsive.html       4.B Responsive home Pge without Boot Strap
+notepad.html          4.C Responsive page with CSS-3 transition using Bootstrap
+roomdemo.html         5.A Basic Apartment search API using 
+Angular
+room.html      5.B Location Specific Apartment 
+
+restaurant.html        6.A Restaurant search in Boston using Locu API
+
+locationrestaurant.html 6.B Location Specific Restaurant search in Boston using Locu API
+
+menu.html              6.c Menu search using loci API and simple shopping Cart
+index.html             7.A JQuery mobile  mini photo app
+main.html              7.B Jquery Mobile nultiple view app       
+marker.html            8.A Simple marker on Google maps using Angular UI
+markers.html           8.B Multiple Hardcoded markers on Google maps using Angular UI
+map.html               8.C Displaying Restaurants in Boston on Google Map fetched from API       
+index2.html            8.D Project Home page and Location specific restaurant search
+home.html              9.A Project Update,add reviews,add to favorites,login,search events
+home.html              9.B Project Update,Login Authentication,profile page,authentication details in the blog
+jqueryapi.html         10.A Ajax and Jquery to make an API call
+conversion.html        10.B Javascript temperature converter
+foundationform.html    10.C A simple form using Foundation framework,alternative to bootrap framework
+foundation.html            10.D A cool,mobile specific shopping table in foundation framework

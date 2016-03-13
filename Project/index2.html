@@ -1,0 +1,163 @@
+
+    <style>
+    #searchbar
+    {
+    margin-top: 2.5%;
+    margin-left:10%;
+    margin-right:10%;
+
+    }
+    #searchbutton
+    {
+    margin-top:15px;
+    margin-left:40%;
+    margin-bottom:10px;
+    }
+    #graphic
+    {
+    margin-top:0%;
+    margin-left:30%;
+    
+    }
+    #content
+    {
+    margin-top:15px;
+    margin-left: 4%;
+    margin-right: 4%;
+    width: 92%;
+    border:5px solid black;
+    }
+    .angular-google-map-container
+    {
+    width: 100%;
+    height: 400px;;
+
+    }
+    input.ng-invalid {
+  border: 1px solid red;
+   }
+   input.ng-valid {
+   border: 1px solid green;
+   }  
+    </style>
+
+
+<div ng-controller='mainCtrl'>
+ <div class="row">
+  <div class="col-md-12">
+       <div id="graphic">
+           <img src="download.jpg" class="img-responsive">
+            <br>
+              <b>Search Restaurants, Rooms, and Events while you travel</b>
+        </div>
+        </div>
+        </div>
+<div class="row">
+ <div class="col-md-12">
+    <div id="searchbar">
+     <form class="form col-md-12 center-block" novalidate  name="form" ng-submit="getStops()">
+        <div class="form-group">
+        <input class="form-control" g-places-autocomplete ng-model="loc"/>
+
+             <div class="error-container"  ng-show="form.email.$dirty && form.email.$invalid">
+                <small class="error"  ng-show="form.email.$error.required">
+                      This field is required.
+                </small>
+           </div>
+     </div>
+    <div class="form-group">
+       <button  type="submit" class="btn btn-sample btn-lg" id="searchbutton" value="Search" ng-disabled="form.$invalid">Search</button>
+    </div>
+    </form>
+</div>
+    
+</div>
+ </div>
+
+
+<div class="row">
+    <div class="col-md-12">          
+      <div id="content" ng-show="show">
+       <tabset>
+          <tab heading="Show in Map">
+             <ui-gmap-google-map center="map.center" zoom="map.zoom" draggable="true" options="options">
+                <ui-gmap-marker ng-repeat="m in smarkers" coords="m"  idKey="m.idKey" click="onClick(m)" events="marker.events" icon="restaurantmarkerIcon">
+                <ui-gmap-window options="windowOptions" closeClick="closeClick()" show="m.show">
+                   <div><b>{{m.title}}</b><br>
+                     <i>{{m.address}}</i><br>
+                      <i>{{m.phone}}</i>
+                     </div>
+                   </ui-gmap-window>
+                    </ui-map-marker>
+                <ui-gmap-marker ng-repeat="r in roomMarkers" coords="r"  idKey="r.idKey" click="onRoomClick(r)" events="marker.events" icon="roomMarkerIcon">
+                <ui-gmap-window options="windowOptions" closeClick="restcloseClick()" show="r.show">
+                 <div><b>{{r.title}}</b><br>
+                   <i>{{r.price|currency}}</i><br>
+
+                  </div>
+                 </ui-gmap-window>
+                  </ui-map-marker>
+               </ui-gmap-google-map>
+          </tab>
+     <tab heading="Restaurants">
+      <div class="row">
+        <div class="col-md-12">      
+          <div id="restaurant">
+            <table class="table table-striped" >
+             <thead>
+                   <tr>
+                      <th>Name</th>
+                       <th> Menu</th>
+                         <th> Website Link</th>
+                         <th> Details</th>
+                      </tr>
+               </thead>
+            <tbody>
+                 <tr ng-repeat="w in restaurants">
+                  <td>{{w.name}}</td>
+                   <td><div ng-show="{{w.has_menu}}">Menu Available,click on details</div><div ng-hide="{{w.has_menu}}">No Menu,visit website</div></td>
+                    <td> <a href="{{w.website_url}}"><button type="button" class="btn btn-sample">Info</button></a></td>
+                    <td><button type="button" ng-click="getDetails(w.id)"  class="btn btn-info">details</button></td>
+                 </tr>
+                 </tbody>
+     </table>
+     </div></div></div>
+ </tab>
+ <tab heading="Rental Apartments">
+    <table class="table table-striped" id="tab">
+       <thead>
+            <tr>
+              <th>Description</th>
+                 <th>Type</th>
+                 <th> Rooms</th>
+                 <th> Max Guests</th>
+                  <th> Price</th>
+                  <th> Images</th>
+                   <th>Info</th>
+               </tr>
+      </thead>
+      <tbody>
+           <tr ng-repeat="w in apartments">
+            <td>{{w.title}}</td>
+                    <td>{{w.type}}</td>
+                    <td>{{w.num_rooms}}</td>
+                    <td>{{w.max_guests}} </td>
+                    <td>${{w.price}} </td>
+                    <td><img ng-src= "{{w.thumbnail}}" class="img-responsive"> </img></td>
+                <td> <a href="{{w.url}}"><button type="button" class="btn btn-info">Info</button></a></td>
+
+          </tr>
+    </tbody>
+ </table>
+</tab>
+</tabset>
+
+    </div>
+    </div>
+    </div>
+    </div>
+
+    <!-- Menu Toggle Script -->
+
+
+    

@@ -1,0 +1,351 @@
+<head>
+
+<link href="bootstrap.min.css" rel="stylesheet">
+<style>
+.imga
+{
+ border : solid 1px red;
+ }
+ .imga:hover 
+ {
+ -webkit-transform:scale(1.2); /* Safari and Chrome */
+    -moz-transform:scale(1.2); /* Firefox */
+    -ms-transform:scale(1.2); /* IE 9 */
+    -o-transform:scale(1.2); /* Opera */
+     transform:scale(1.2);
+ }
+ #content
+ {
+ margin-left:7.5%;
+ margin-right:7.5%;
+ border : 5px solid black;
+ }
+ 
+ </style>
+</head>
+
+<body>
+
+
+<div id="content">
+<div class="row">
+<div class="col-md-12">
+<h1 align="center">Travel Search</h1>
+<h3>Author</h4>
+Navneet Verma,Candidate for MS in CS 
+<BR>CCIS,NEU,Boston
+<br><i>verma.n@husky.neu.edu</i>
+<hr>
+<h3>Abstract</h3>
+
+In this report we would discuss about project we developed this semester.I would describe  project objectives,requirements analysis,database design and Interface design decisions.Going further ,I would describe the challanges we faced,our Success and failures in terms of requirements we met.Finally,  I would describe the learnings and further modifications to the system.
+<hr>
+<h3>Introduction</h3>
+This project 'TravelSearch'is a single page application that  attempts to help users to find restaurants,short term apartments and events when they are travelling.It also allows user to review and favorite restaurants and other users.User can see the review posted by him,his favorite users and restaurants in his profile and delete them from there if he wants.
+<hr>
+<h3>Requirements</h3>
+<ul>
+<li><h4>Functional Requirements</h4></li>
+<ul>
+<li>User Should be able to search Restaurant ,Apartments and events in the city he wants</li>
+<li>All the search results should be visible on google maps</li>
+<li>User should be able to see reviews of selected restaurant and it's menu.if available.</li>
+<li>User should be able to review an restaurant but only after login.</li>
+<li>User should be able to add  an restaurant or other users as favorite but only after login.</li>
+<li>User should be able to see his reviews ,favorite restaurants and users in the profile.</li>
+<li>User should be able to see his favorite user's reviews ,favorite restaurants and users through his profile.</li>
+<li>User should be able to see another user's reviews ,favorite restaurants  through restaurant details page page</li>
+<li>User should be able to delete his  reviews ,favorite restaurants and users through his profile.</li>
+<li>User Should be able to update his profile(Name and Location Only).</li>
+</ul>
+<li><h4>Non Functional Requirements</h4></li>
+<ul>
+ <li> Multiple users should be able to access data from the app at any point of time.</li>
+  <li>  Data provided by the app to the users should be correct and checked at regular intervals.</li>
+<li>Application and services provided by it should be available to user at any point of time after the installation.</li>
+   <li>Interface of the app should be user centric and design should be minimalistic, avoiding too much of information on one page.</li>
+</ul>
+</ul>
+<hr>
+<h3>Implementation Details</h3>
+<ul>
+<li><b>Front End:</b>
+ HTML5,CSS,JavaScript,Angular,jQuery,BootStrap</li>
+
+<li><b>Database:</b>
+
+    MongoDB
+
+<li><b>Web services:</b>
+
+   Locu,RoomoRama,Event,GoogleMaps
+
+<li><b>Data Representation:</b>
+Json
+</ul>
+<hr>
+<h3>Design</h3>
+<ul><li><h4>Identifying Classes</h4>
+   <ul><li> Guest User:Class describing the Guest User and relevant attributes.</li>
+   <li> Registered User:Class describing the Guest User.</li>
+    <li>Restaurant : Class describing Restaurant and it's attributes</li>
+    <li>Room : Class describing Room and it's attributes</li>
+    <li>Event : Class describing event and it's attributes</li>
+    <li>Review: Class describing review made by user</li>
+    <li>Menu: Class describing menu and it's attributes
+    </ul>
+<li><h4>Relationships</h4>
+<table width="750" border="1">
+<tr>
+<td>From Table</td>
+<td>To Table</td>
+<td>Relatiosnhip</td>
+<td>Description</td>
+</tr>
+<tr>
+<td>User</td>
+<td>Restaurant,Room,Event</td>
+<td>many to many</td>
+<td>A user can search  many restaurants.Rooms and events</td>
+</tr>
+
+<tr>
+<td>Registered User</td>
+<td>Registered User</td>
+<td>1,*</td>
+<td>A registered user can add to favorite many registered users</td>
+</tr>
+<tr>
+<td>Registered User</td>
+<td>Restaurant</td>
+<td>Many to many</td>
+<td>A registered user can add to favorite many restaurants</td>
+</tr>
+<tr>
+<td>Registered User</td>
+<td>Review</td>
+<td>One to many</td>
+<td>A registered users cab write many reviews</td>
+</tr>
+<tr>
+<td>Restaurant</td>
+<td>Review</td>
+<td>One to many</td>
+<td>A restaurant can have many reviews </td>
+</tr>
+<td>Restaurant</td>
+<td>Menu</td>
+<td>One to one</td>
+<td>A restaurant can have one menu </td>
+</tr>
+</table>
+<br>
+<li><h4>Use Cases</h4>
+<ul><li><h5>Actors</h5>
+<ul><li><b>Free User</b>: Access to search related content only.</li>
+<li><b>Registered User</b>: Access to full content.</li>
+</ul>
+<li><h5> Use case Diagram</h5></li>
+<img src="usecase.png" width="400" height="400"></img>
+</ul>
+</ul>
+<hr>
+<br>
+<br>
+<h3>Requirements Coverage</h3>
+<ul>
+<li><h4>User Should be able to search Restaurant ,Apartments and events in the city he wants.<h4></li>
+<div class="row">
+<div  class="col-md-4">
+<div class="imga">
+<img src="search1.png" width="256" height="256"></img>
+</div>
+</div>
+<div  class="col-md-4">
+<div class="imga">
+<img src="search2.png" width="256" height="256"></img>
+</div>
+</div>
+<div  class="col-md-4">
+<div class="imga">
+<img src="search4.png" width="256" height="256"></img>
+</div>
+</div>
+<br>
+<b>Link To relevant experiments:</b>
+<br><a href="http://net4.ccs.neu.edu/home/navneet/Experiment/ex1/room.html">Search Rooms</a>
+<br><a href="http://net4.ccs.neu.edu/home/navneet/Experiment/ex1/locationrestaurant.html">Search Restaurant</a>
+<br><a href="http://net4.ccs.neu.edu/home/navneet/Experiment/ex1/map.html">Show In Map</a>
+</div>
+<br>
+<br>
+<li><h4>User should be able to see reviews,details of selected restaurant and it's menu.if available.</h4></li>
+<ul><li>Restaurant details page show,how manny users have liked it,it shows  menu and reviews if available,if not then shows nothing.<li></ul>
+
+<div class="row">
+<div class="col-md-6">
+<div class="imga">
+<img  src="details1.png" width="375" height="256"></img>
+</div>
+</div>
+<div  class="col-md-6">
+<div class="imga">
+<img src="details2.png" width="375" height="256"></img>
+</div>
+</div>
+<br>
+<b>Link To relevant experiments:</b>
+<br><a href="http://net4.ccs.neu.edu/home/navneet/Experiment/ex1/menu.html">Search Rooms</a>
+<br><a href="http://net4.ccs.neu.edu/home/navneet/Experiment/ex1/home.html">Project Updtate</a>
+</div>
+<br>
+<br>
+<li><h4>User should be able to review an restaurant and add a restaurant and other user as favorite only after login.</h4></li>
+<ul><li>Here I have taken notice that user should not be able to save same restaurant or user as favorite.<br></li>
+<li>Submit field in login modal and review  form are disabled if required fields are not filled.</li>
+<li>The user will be asked to login for the first time when he attempts to post review or attempt to add a restaurant or user to favorite.</li>
+</ul>
+<div class="row">
+<div  class="col-md-3">
+<div class="imga">
+<img src="details3.png" width="200" height="200"></img>
+</div>
+</div>
+<div  class="col-md-3">
+<div class="imga">
+<img src="details4.png" width="200" height="200"></img>
+</div>
+</div>
+<div  class="col-md-3">
+<div class="imga">
+<img src="details5.png" width="200" height="250"></img>
+</div>
+</div>
+<div  class="col-md-3">
+<div class="imga">
+<img src="details6.png" width="200" height="200"></img>
+</div>
+
+</div>
+<b>Link To relevant experiments:</b>
+<br><a href="http://net4.ccs.neu.edu/home/navneet/Experiment/ex1/home.html">Project Updtate</a>
+
+</div>
+<br><br>
+<li><h4>User should be able to see his reviews ,favorite restaurants and users in the profile.<h4></li>
+<ul><li>Here I have made facility to visit the restaurant or user profile when you click on the blue link telling their name</ul>
+<div class="row">
+<div  class="col-md-4">
+<div class="imga">
+<img src="profile1.png" width="250" height="256"></img>
+</div>
+</div>
+<div  class="col-md-4">
+<div class="imga">
+<img src="profile2.png" width="250" height="256"></img>
+</div>
+</div>
+<div  class="col-md-4">
+<div class="imga">
+<img src="profile3.png" width="250" height="256"></img>
+</div>
+</div>
+</div>
+<br><br>
+
+<li><h4>User should be able to see his favorite user's reviews ,favorite restaurants and users through his profile.</h4></li>
+<br>
+<div class="row">
+<div class="col-md-6">
+<div class="imga">
+<img  src="user1.png" width="375" height="256"></img>
+</div>
+</div>
+<div  class="col-md-6">
+<div class="user2.png">
+<img src="user2.png" width="375" height="256"></img>
+</div>
+</div>
+</div>
+<li><h4>User should be able to see his other user's reviews ,favorite restaurants and users through restaurant details page.</h4></li>
+<ul><li>When you click on blue link,specifying user email address in review section you will be redirected to user's page.For example,uf we click a@gmail.com as shown in picture given below.</li></ul>
+<br>
+<div class="row">
+<div class="col-md-6">
+<div class="imga">
+<img  src="review1.png" width="375" height="256"></img>
+</div>
+</div>
+<div  class="col-md-6">
+<div class="user2.png">
+<img src="review2.png" width="375" height="256"></img>
+</div>
+</div>
+</div>
+<br>
+<br>
+<h4><li>User should be able to delete his  reviews ,favorite restaurants and users through his profile.</li></h4>
+<ul><li>All options work the same as for deleting review,In below example I am attempting to delete review of BlackJack Pastabar,of date 8th december.Once you delete it changes are reflected both in your profile page and restaurant page.</li></ul>
+<br>
+<div class="row">
+<div class="col-md-6">
+<div class="imga">
+<img  src="delete1.png" width="375" height="256"></img>
+</div>
+</div>
+<div  class="col-md-6">
+<div class="user2.png">
+<img src="delete2.png" width="375" height="256"></img>
+</div>
+</div>
+</div>
+<br>
+<br>
+<h4><li>User Should be able to update his profile(Name and Location Only).</li></h4>
+<ul><li>I have made update modal,similar as login modal,if the field is invalid,the border of textbox is red,else green,button becomes active only if both name and location are entered.On successful update changes are seen in the profile.</li></ul>
+<div class="row">
+<div  class="col-md-3">
+<div class="imga">
+<img src="update1.png" width="250" height="256"></img>
+</div>
+</div>
+<div  class="col-md-3">
+<div class="imga">
+<img src="update2.png" width="250" height="256"></img>
+</div>
+</div>
+<div  class="col-md-3">
+<div class="imga">
+<img src="update3.png" width="250" height="256"></img>
+</div>
+</div>
+</div>
+<br><br>
+<br><br>
+</ul>
+By the example explained above,we can assume that all our functional requirements have been met,there are some small errors here and there,but most of the functionality works fine.<br>
+As of non functional requirements is concerned,application supports multi user login ,follow minimalist design and can be used at any point of time,hence they are also met.
+<hr>
+<h3>A few issues in the project:</h3>
+<ul>
+<li>Somehow home page is not acting responsive,the bottom content goes beyond div area on smaller screens.</li>
+<li>On home page in google maps,marker widow for restaurant gets closed on click but room's marker window doesn't close or take too long.</li>
+</ul>
+</h3>
+<h3>References</h3>
+                    <ul>
+                        <li><b><a href="http://net4.ccs.neu.edu/home/jga" target="_blank">Professor Jose's Website</a></b></li>
+                        <li><b><a href="http://www.w3schools.com" target="_blank">W3Schools</a></b></li>
+                        <li><b><a href="http://getbootstrap.com" target="_blank">Bootstrap</a></b></li>
+                        <li><b><a href="http://stackoverflow.com" target="_blank">Stack OverflowA</a></b></li>
+                        <li><b><a href="https://dev.locu.com/documentation" target="_blank">Locu API </a></b></li>
+                     <li><b><a href="https://www.roomorama.com/api/v1_0" target="_blank">RoomoRama API</a></b></li>
+                    <li><b><a href=https://angular-ui.github.io/" target="_blank">RoomoRama API</a></b></li>
+
+                    </ul>
+                <br />
+
+<hr>
+<h3>Conclusion:</h3>
+I was able to accomplish most of the functionality that was expected out of me.I could have provided facility for user registration and update review if time had permitted,It was great learning experience,I thank professor Jose and TA's for providing me such experience.
+</div>
